@@ -20,6 +20,7 @@ def ChessboardTraveling(str):
     results = []
     finish = False
     hasResult = False
+    possibleMoves = ["R", "U"]
 
     # for res in results:
 
@@ -29,20 +30,31 @@ def ChessboardTraveling(str):
         hasResult = True
         prevMoves = results[0]
 
+    moveNum = 0
+
+    if hasResult == True:
+        pass
+
+
+
     while finish == False:
-        if hasResult == True:
-            pass
+        # for pm in possibleMoves:
+
         if posX < distX:
             posX = stepRight(posX)
             currMoves.append("R")
+            moveNum += 1
         elif posY < distY:
             posY = stepUp(posY)
             currMoves.append("U")
+            moveNum += 1
         else:
             finish = True
             results.append(currMoves)
+            moveNum = 0
+            print currMoves, len(currMoves)
+            currMoves = []
 
-    print currMoves, len(currMoves)
     print results, len(results)
 
 
