@@ -173,6 +173,7 @@ def ChessboardTraveling(str):
     # code goes here
     return str
 
+
 def printCurrMoves(currMoves, moveNum):
     pass
     # print currMoves, moveNum
