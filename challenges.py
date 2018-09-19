@@ -1,6 +1,58 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+def ChessboardTraveling(str):
+    startX = 1
+    startY = 1
+    endX = 4
+    endY = 3
+    distX = endX - startX
+    distY = endY - startY
+    posX = 0
+    posY = 0
+    possibleMoveNum = distX + distY
+    possibleMoves = ["R", "U"]
+    results = []
+
+    prevMoves = []
+
+    for pm in range(endX * endY):
+        currMoves = ""
+        # for res in range(len(results)):
+
+        print 'prevMoves: ', prevMoves
+
+        for step in range(possibleMoveNum):
+            # if prevMoves[0] == "R":
+            #     pass
+
+            if currMoves.count("R") < distX:
+
+                currMove = "R"
+
+                currMoves += currMove
+            else:
+                currMoves += "U"
+
+        print 'currMoves: ', currMoves
+
+        if len(results) == 0:
+            results.append(currMoves)
+            prevMoves = results[len(results) - 1]
+        else:
+            if currMoves not in results:
+                results.append(currMoves)
+                prevMoves = results[len(results) - 1]
+
+    print results
+
+# keep this function call here
+# print ChessboardTraveling(raw_input())
+ChessboardTraveling("1")
+
+exit()
+
+
 # 11
 def ChessboardTraveling(str):
     startX = 1
@@ -19,43 +71,98 @@ def ChessboardTraveling(str):
     currMoves = []
     results = []
     finish = False
-    hasResult = False
+    hasPreviousResult = False
     possibleMoves = ["R", "U"]
 
+    possibleMoveNum = distX + distY
     # for res in results:
 
     # for currRes in range(len(results) + 1):
 
-    if len(results) > 0:
-        hasResult = True
-        prevMoves = results[0]
+    # if len(results) > 0:
+    #     hasPreviousResult = True
+    #     prevMoves = results[0]
 
     moveNum = 0
 
-    if hasResult == True:
-        pass
+    # if hasPreviousResult == True:
+    # for pm in range(endX * endY):
+    for pm in range(4):
+        finish = False
+        posX = 0
+        posY = 0
 
+        if hasPreviousResult == True:
+            # print pm, prevMoves
+            while finish == False:
+                # print 'moveNum: ', moveNum
+                if moveNum < possibleMoveNum:
+                    if prevMoves[moveNum] == "R":
+                        if posY < distY:
+                            posY = stepUp(posY)
+                            currMoves.append("U")
+                            moveNum += 1
+                            printCurrMoves(currMoves, moveNum)
+                        elif posX < distX:
+                            posX = stepRight(posX)
+                            currMoves.append("R")
+                            moveNum += 1
+                            printCurrMoves(currMoves, moveNum)
+                        else:
+                            finish = True
+                    else:
+                        if posX < distX:
+                            posX = stepRight(posX)
+                            currMoves.append("R")
+                            moveNum += 1
+                            printCurrMoves(currMoves, moveNum)
+                        elif posY < distY:
+                            posY = stepUp(posY)
+                            currMoves.append("U")
+                            moveNum += 1
+                            printCurrMoves(currMoves, moveNum)
+                        else:
+                            finish = True
+                else:
+                    finish = True
 
+                if finish == True:
+                    results.append(currMoves)
+                    moveNum = 0
+                    print currMoves, len(currMoves)
+                    currMoves = []
+                    hasPreviousResult = True
+                    prevMoves = results[len(results) - 1]
+                    # prevMoves = results[0]
 
-    while finish == False:
-        # for pm in possibleMoves:
-
-        if posX < distX:
-            posX = stepRight(posX)
-            currMoves.append("R")
-            moveNum += 1
-        elif posY < distY:
-            posY = stepUp(posY)
-            currMoves.append("U")
-            moveNum += 1
         else:
-            finish = True
-            results.append(currMoves)
-            moveNum = 0
-            print currMoves, len(currMoves)
-            currMoves = []
+            # print pm
+            while finish == False:
+                if posX < distX:
+                    posX = stepRight(posX)
+                    currMoves.append("R")
+                    moveNum += 1
+                    printCurrMoves(currMoves, moveNum)
+                elif posY < distY:
+                    posY = stepUp(posY)
+                    currMoves.append("U")
+                    moveNum += 1
+                    printCurrMoves(currMoves, moveNum)
+                else:
+                    finish = True
 
-    print results, len(results)
+                if finish == True:
+                    results.append(currMoves)
+                    moveNum = 0
+                    print currMoves, len(currMoves)
+                    currMoves = []
+                    hasPreviousResult = True
+                    prevMoves = results[0]
+
+            # print 'prevMoves: ', prevMoves
+
+
+    # print results, len(results)
 
 
 
@@ -65,6 +172,10 @@ def ChessboardTraveling(str):
 
     # code goes here
     return str
+
+def printCurrMoves(currMoves, moveNum):
+    pass
+    # print currMoves, moveNum
 
 def stepRight(posX):
     posX += 1
