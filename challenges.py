@@ -1,6 +1,117 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+# 13
+def PentagonalNumber(num):
+
+    pNum = 1
+    for tt in range(int(num)):
+        n = tt + 1
+        currPNum = (n - 1) * 5
+        pNum += currPNum
+
+    # code goes here
+    return pNum
+
+# keep this function call here
+print PentagonalNumber(raw_input())
+
+exit()
+
+# 12
+
+# 0111
+# 1101
+# 0111
+#
+# 0111
+# 1111
+# 1101
+# 1101
+#
+# 11000
+# 10111
+# 11111
+# 00111
+
+def MaximalSquare(strArr):
+    # inp = ["0111", "1111", "1111", "0011"]
+    inp = ["10100", "10111", "11111", "00111"]
+    rowNum = len(inp)
+    colNum = len(inp[0])
+
+    print 'rowNum: ', rowNum, 'colNum: ', colNum, "\n"
+
+    ss = []
+    firstBitLoc = 0
+    bitNum = 0
+
+    for number in inp:
+        i = 1
+        firstBitLoc = 0
+        bitNum = 0
+        isNull = False
+
+        for char in number:
+            if char == "1":
+                if firstBitLoc == 0:
+                    firstBitLoc = i
+                    bitNum += 1
+                else:
+                    bitNum += 1
+                # print i, char, bits
+            else:
+                isNull = True
+                if firstBitLoc > 0:
+                    if bitNum > 1:
+                        pass
+                    else:
+                        pass
+                    # firstBitLoc = 0
+            i += 1
+        ss.append([firstBitLoc, bitNum])
+
+        print number,
+        print 'First bit location: ', firstBitLoc, 'Number of bits: ', bitNum
+
+        # print ss
+    # code goes here
+    return strArr
+
+# keep this function call here
+# print MaximalSquare(raw_input())
+MaximalSquare(1)
+
+exit()
+
+
+
+# 11
+def fac(num):
+    result = 1
+    for i in range(2,num+1):
+        result *= i
+    return result
+
+
+def ChessboardTraveling(stri):
+    # a = int(stri[6])-int(stri[1])
+    # b = int(stri[8])-int(stri[3])
+
+    a = 1
+    b = 7
+
+    # return fac(a+b)/fac(a)/fac(b)
+    print fac(a+b)/fac(a)/fac(b)
+
+# keep this function call here
+# to see how to enter arguments in Python scroll down
+# print ChessboardTraveling(raw_input())
+ChessboardTraveling(1)
+
+exit()
+
+# 11
 def ChessboardTraveling(str):
     startX = 1
     startY = 1
