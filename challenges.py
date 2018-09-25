@@ -1,7 +1,211 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+
+# aqrst
+# ukaei
+# ffooo
+
+
+# abcd
+# eikr
+# oufj
+
+def VowelSquare(strArr):
+    vowels = "aeiouy"
+
+    # strArr = list(strArr)
+
+    rowNum = len(strArr)
+    colNum = len(strArr[0])
+
+    print strArr, type(strArr), rowNum, colNum
+
+    rr = 0
+    while rr < rowNum:
+        currRow = strArr[rr]
+        if rr < rowNum - 1:
+            nextRow = strArr[rr + 1]
+        else:
+            nextRow = strArr[rr]
+
+        for r in range(len(currRow)):
+            # print currRow
+            if r < len(currRow) - 1 and rr < rowNum - 1 and currRow[r] in vowels:
+                if currRow[r + 1] in vowels and nextRow[r] in vowels and nextRow[r + 1] in vowels:
+                    return str(rr) + "-" + str(r)
+                    break
+
+        rr += 1
+
+    # code goes here
+    return "not found"
+
+# keep this function call here
+# print VowelSquare(raw_input())
+print VowelSquare(["abcd", "eikr", "oufj"])
+# VowelSquare(["abcd", "eikr", "oufj"])
+# print VowelSquare(["aqrst", "ukaei", "ffooo"])
+
+exit()
+
+
+
+def ScaleBalancing(strArr):
+    x,y = eval(strArr[0])
+    w = eval(strArr[1])
+
+    for i in range(0, len(w)):
+        if x + w[i] == y or y + w[i] == x:
+            return w[i]
+        for j in range(i + 1, len(w)):
+            if x + w[i] == y + w[j] or x + w[j] == y + w[i] or x + w[i] + w[j] == y or x == y + w[i] + w[j]:
+                return str(w[i]) + ',' + str(w[j])
+    # code goes here
+    return 'not possible'
+
+# keep this function call here
+# print ScaleBalancing(raw_input())
+# print ScaleBalancing(["1, 8", "1, 2, 3, 6, 14"])
+# print ScaleBalancing(["5, 9", "1, 2, 6, 7"])
+print ScaleBalancing(["3, 10", "1, 1, 5, 10"])
+
+exit()
+
+def ScaleBalancing(strArr):
+
+    chain = "(34 + 8)/3"
+    res = eval(chain)
+    print res, type(res)
+
+    weights = strArr[0]
+    weights.sort()
+
+    diff = max(weights) - min(weights)
+    # print diff
+
+
+    addWeights = strArr[1]
+    sumWeights = []
+    # print addWeights[-1]
+
+    sum = []
+    for aw in addWeights:
+        if sum:
+            sum.append(sum[-1] + aw)
+        else:
+            sum.append(aw)
+            print "üres a lista"
+
+
+    print sum
+    # sum = 0
+    # for aw in addWeights:
+    #     sum += aw
+    #     print sum
+    #     if sum == diff:
+    #         print sum
+
+
+    # print sum
+
+
+    # code goes here
+    # return strArr
+
+# keep this function call here
+# print ScaleBalancing(raw_input())
+# ScaleBalancing([[3, 4], [1, 2, 7, 7]])
+ScaleBalancing([[13, 4], [1, 2, 3, 6, 14]])
+
+exit()
+
+def ScaleBalancing(strArr):
+
+    weights = strArr[0]
+    weights.sort()
+    # print weights
+
+    addWeights = strArr[1]
+    sumWeights = []
+
+    for w in weights:
+        sumWeight = [w]
+        for aw in addWeights:
+            sumWeight.append(w + aw)
+
+        sumWeights.append(sumWeight)
+    print sumWeights
+
+    for sumWeight in sumWeights[0]:
+        pass
+
+    # while i < len(sumWeights[0]):
+    for ww in sumWeights[0]:
+
+        # print ww
+        try:
+            ss = sumWeights[1].index(ww)
+            print ww, ss
+            # print sumWeights[1][ss] - addWeights[ss]         #, ss, addWeights[ss]
+            break
+        #     found = 1
+        #
+        #     print sumWeight
+        #     break
+
+        except:
+            print "nincs"
+
+
+        # if sumWeight in sumWeights[1]:
+
+    # code goes here
+    return strArr
+
+# keep this function call here
+# print ScaleBalancing(raw_input())
+ScaleBalancing([[3, 4], [1, 2, 7, 7]])
+
+exit()
+
+
+
+def duplicates(arr):
+
+    # our hash table to store each element
+    # in the list as we pass through it
+    hashTable = {}
+
+    # store duplicates
+    dups = []
+
+    # check each element in the array
+    for i in range(0, len(arr)):
+
+        # if element does not exist in hash table
+        # then insert it
+        if arr[i] not in hashTable:
+            hashTable[arr[i]] = True
+
+        # if element does exist in hash table
+        # then we know it is a duplicate
+        else:
+            dups.append(arr[i])
+
+    print hashTable
+    return dups
+
+print duplicates([1, 21, -4, 103, 21, 4, 1])
+
+exit()
 # 13
+
+ff = [[1,2,3,4,5], [6,7,8,9,10], [11,12,13,14,15]]
+
+print ff[1][3]
+exit()
+
 def PentagonalNumber(num):
 
     pNum = 1
