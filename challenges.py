@@ -14,6 +14,7 @@
 def VowelSquare(strArr):
     vowels = "aeiouy"
 
+
     # strArr = list(strArr)
 
     rowNum = len(strArr)
